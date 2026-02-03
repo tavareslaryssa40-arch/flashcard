@@ -66,33 +66,12 @@ let current = 0;
 function loadCard() {
   document.getElementById("question").innerText = cards[current].question;
   document.getElementById("answer").innerText = cards[current].answer;
-  document.getElementById("answer").classList.add("hidden");
-}
-
-function showAnswer() {
-  document.getElementById("answer").classList.remove("hidden");
-}
-
-function nextCard() {
-  current = (current + 1) % cards.length;
-  loadCard();
-}
-
-loadCard();
-let current = 0;
-let isFlipped = false;
-
-function loadCard() {
-  document.getElementById("question").innerText = cards[current].question;
-  document.getElementById("answer").innerText = cards[current].answer;
 
   document.querySelector(".flashcard").classList.remove("flipped");
-  isFlipped = false;
 }
 
 function flipCard() {
   document.querySelector(".flashcard").classList.toggle("flipped");
-  isFlipped = !isFlipped;
 }
 
 function nextCard() {
