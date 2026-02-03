@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Flashcards</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
+  <div class="app">
+    <h1>Global Communication Flashcards</h1>
 
-  <div class="card">
-    <p id="question">Pergunta aqui</p>
-    <p id="answer" class="hidden">Resposta aqui</p>
+    <div class="flashcard-container">
+      <div class="flashcard" onclick="flipCard()">
+        <div class="card-face card-front">
+          <p id="question"></p>
+        </div>
+        <div class="card-face card-back">
+          <p id="answer"></p>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="nextCard()">Next card</button>
   </div>
-
-  <button onclick="showAnswer()">Mostrar resposta</button>
-  <button onclick="nextCard()">Próximo</button>
 
   <script src="script.js"></script>
 </body>
-</html>
