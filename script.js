@@ -1,4 +1,4 @@
-const cards = [
+const flashcards = [
   {
     question: "What is the “follow-the-sun” model in global teams?",
     answer: "It is a strategy where teams in different time zones work sequentially, allowing projects to progress almost 24 hours a day."
@@ -21,7 +21,7 @@ const cards = [
   },
   {
     question: "What is a communication rhythm in global teams?",
-    answer: "A recurring cycle that alternates rich interactions (meetings, video) with lean communication (emails, shared documents)."
+    answer: "A recurring cycle that alternates rich interactions with lean communication such as emails and shared documents."
   },
   {
     question: "How do accents affect participation in global teams?",
@@ -61,24 +61,26 @@ const cards = [
   }
 ];
 
-let current = 0;
+const container = document.getElementById("flashcards-container");
 
-function loadCard() {
-  document.getElementById("question").innerText = cards[current].question;
-  document.getElementById("answer").innerText = cards[current].answer;
+flashcards.forEach(card => {
+  const cardElement = document.createElement("div");
+  cardElement.className = "flashcard";
 
-  document.querySelector(".flashcard").classList.remove("flipped");
-}
+  cardElement.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">
+        ${card.question}
+      </div>
+      <div class="card-back">
+        ${card.answer}
+      </div>
+    </div>
+  `;
 
-function flipCard() {
-  document.querySelector(".flashcard").classList.toggle("flipped");
-}
+  cardElement.addEventListener("click", () => {
+    cardElement.classList.toggle("flipped");
+  });
 
-function nextCard() {
-  current = (current + 1) % cards.length;
-  loadCard();
-}
-
-loadCard();
-
-
+  container.appendChild(cardElement);
+});
