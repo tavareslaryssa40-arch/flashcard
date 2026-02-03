@@ -3,14 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <title>Global Communication Flashcards</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f6f3fb;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4b3c8f;
+      margin: 30px 0 40px;
+    }
+
+    #flashcards-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 12 cards = 3 linhas */
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .flashcard {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flashcard.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      backface-visibility: hidden;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .card-back {
+      background: #e6e0f7;
+      transform: rotateY(180deg);
+      color: #3d2f7a;
+    }
+
+    @media (max-width: 900px) {
+      #flashcards-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      #flashcards-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <h1>Global Communication Flashcards</h1>
-
   <div id="flashcards-container"></div>
 
-  <script src="script.js"></script>
+  <script>
+    const flashcardsData = [
+      {
+        question: "What is the “follow-the-sun” model in global teams?",
+        answer: "It is a strategy where teams in different time zones work sequentially, allowing projects to progress almost 24 hours a day."
+      },
+      {
+        question: "Why can silence in global meetings be misleading?",
+        answer: "Because in some cultures silence signals respect or careful reflection, not disengagement or lack of ideas."
+      },
+      {
+        question: "What builds trust faster in global virtual teams: tools or interaction patterns?",
+        answer: "Interaction patterns. Regular and predictable communication rhythms build trust over time."
+      },
+      {
+        question: "Why can language fluency distort perceptions of competence?",
+        answer: "Because strong language skills may be mistaken for expertise, while valuable contributions from non-fluent speakers may be overlooked."
+      },
+      {
+        question: "When should teams use video instead of email?",
+        answer: "When issues are complex, ambiguous, emotional, or involve strategic decisions."
+      },
+      {
+        question: "What is a communication rhythm in global teams?",
+        answer: "A recurring cycle that alternates rich interactions with lean communication such as emails and shared documents."
+      },
+      {
+        question: "How do accents affect participation in global teams?",
+        answer: "Accents can influence who is heard and trusted, even when ideas are equally strong."
+      },
+      {
+        question: "Why can digital work increase emotional distance?",
+        answer: "Because fewer informal interactions reduce opportunities for empathy, clarification, and relationship repair."
+      },
+      {
+        question: "Where do many real decisions happen in global teams?",
+        answer: "In informal spaces such as chats, document comments, and quick follow-up messages."
+      },
+      {
+        question: "What is the leader’s main communication role in global teams?",
+        answer: "To orchestrate channels, timing, and participation rather than control information."
+      },
+      {
+        question: "Why is psychological safety critical in intercultural collaboration?",
+        answer: "Because people share ideas and concerns more openly when they feel safe from embarrassment or loss of face."
+      },
+      {
+        question: "Does diversity automatically improve team performance?",
+        answer: "No. Diversity increases innovation only when communication norms and inclusion are intentionally managed."
+      }
+    ];
+
+    const container = document.getElementById("flashcards-container");
+
+    flashcardsData.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "flashcard";
+
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">${item.question}</div>
+          <div class="card-back">${item.answer}</div>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        card.classList.toggle("flipped");
+      });
+
+      container.appendChild(card);
+    });
+  </script>
+
 </body>
 </html>
