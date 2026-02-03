@@ -13,8 +13,8 @@ h1 {
 
 .flashcards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -24,10 +24,9 @@ h1 {
 }
 
 .card-inner {
+  position: relative; /* ESSENCIAL */
   width: 100%;
   height: 180px;
-  background: none;
-  position: relative;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   cursor: pointer;
@@ -40,8 +39,7 @@ h1 {
 .card-front,
 .card-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   padding: 20px;
   border-radius: 16px;
   display: flex;
@@ -58,6 +56,6 @@ h1 {
 
 .card-back {
   background-color: #6a5acd;
-  color: #ffffff;
+  color: white;
   transform: rotateY(180deg);
 }
