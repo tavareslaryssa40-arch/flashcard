@@ -1,4 +1,4 @@
-const flashcards = [
+const flashcardsData = [
   {
     question: "What is the “follow-the-sun” model in global teams?",
     answer: "It is a strategy where teams in different time zones work sequentially, allowing projects to progress almost 24 hours a day."
@@ -63,24 +63,20 @@ const flashcards = [
 
 const container = document.getElementById("flashcards-container");
 
-flashcards.forEach(card => {
-  const cardElement = document.createElement("div");
-  cardElement.className = "flashcard";
+flashcardsData.forEach(item => {
+  const card = document.createElement("div");
+  card.className = "flashcard";
 
-  cardElement.innerHTML = `
+  card.innerHTML = `
     <div class="card-inner">
-      <div class="card-front">
-        ${card.question}
-      </div>
-      <div class="card-back">
-        ${card.answer}
-      </div>
+      <div class="card-front">${item.question}</div>
+      <div class="card-back">${item.answer}</div>
     </div>
   `;
 
-  cardElement.addEventListener("click", () => {
-    cardElement.classList.toggle("flipped");
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
   });
 
-  container.appendChild(cardElement);
+  container.appendChild(card);
 });
