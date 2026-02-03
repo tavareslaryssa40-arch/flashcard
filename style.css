@@ -1,35 +1,35 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f1fa;
   margin: 0;
-  padding: 40px;
+  font-family: Arial, sans-serif;
+  background-color: #f6f3fb;
   text-align: center;
 }
 
 h1 {
-  color: #4b3c88;
-  margin-bottom: 40px;
+  color: #4b3c8f;
+  margin: 40px 0;
 }
 
-.flashcards-container {
+#flashcards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 60px;
+  padding: 0 20px;
 }
 
 .flashcard {
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .card-inner {
-  position: relative; /* ESSENCIAL */
+  position: relative;
   width: 100%;
   height: 180px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  cursor: pointer;
 }
 
 .flashcard.flipped .card-inner {
@@ -39,23 +39,22 @@ h1 {
 .card-front,
 .card-back {
   position: absolute;
-  inset: 0;
-  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background: white;
   border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 20px;
   backface-visibility: hidden;
-}
-
-.card-front {
-  background-color: #ffffff;
+  font-size: 15px;
   color: #333;
 }
 
 .card-back {
-  background-color: #6a5acd;
-  color: white;
+  background: #e6e0f7;
   transform: rotateY(180deg);
+  color: #3d2f7a;
 }
